@@ -24,6 +24,67 @@ namespace MathForGames
             _actors = appendedArray;
         }
 
+        public bool RemoveActor(int index)
+        {
+            if (index < 0 || index >= _actors.Length)
+            {
+                return false;
+            }
+
+            bool actorRemoved = false;
+
+            Actor[] newArray = new Actor[_actors.Length - 1];
+            int j = 0;
+            for (int i = 0; i < _actors.Length; i++)
+            {
+                if (i != index)
+                {
+                    newArray[j] = _actors[i];
+                    j++;
+                }
+                else
+                {
+                    actorRemoved = true;
+                    //if (_actors[i].Started)
+                        _actors[i].End();
+                }
+            }
+ 
+            _actors = newArray;
+            return actorRemoved;
+        }
+
+        public bool RemoveActor(Actor actor)
+        {
+            if (actor == null)
+            {
+                return false;
+            }
+
+            bool actorRemoved = false;
+            Actor[] newArray = new Actor[_actors.Length - 1];
+            int j = 0;
+            for (int i = 0; i < _actors.Length; i++)
+            {
+                if (actor != _actors[i])
+                {
+                    newArray[j] = _actors[i];
+                    j++;
+                }
+                else
+                {
+                    actorRemoved = true;
+                    //if (actor.Started)
+                        actor.End();
+                }
+            }
+
+            _actors = newArray;
+
+            return actorRemoved;
+
+        }
+
         public void Start()
         {
 
