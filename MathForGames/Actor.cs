@@ -61,11 +61,11 @@ namespace MathForGames
 
         public bool CheckCollision(Actor collider)
         {
-            float distance = (float)Math.Sqrt((collider._collisionRadius + _collisionRadius));
+            float distance = 
 
-            if (distance <= 1)
+            if ()
             {
-                OnCollision(collider);
+                
                 return true;
             }
             return false;
@@ -204,6 +204,7 @@ namespace MathForGames
         {
             UpdateTransform();
 
+            CheckCollision();
 
             Velocity += Acceleration;
 

@@ -20,6 +20,7 @@ namespace MathForGames
         private static bool _gameOver = false;
         private static Scene[] _scenes;
         private static int _currentSceneIndex;
+        private Sprite _sceneSprite;
 
         public static int CurrentSceneIndex
         {

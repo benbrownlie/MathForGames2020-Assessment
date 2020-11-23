@@ -9,6 +9,7 @@ namespace MathForGames
     class Enemy : Actor
     {
         private Actor _target;
+        private Sprite _enemySprite;
 
         public Actor Target
         {
