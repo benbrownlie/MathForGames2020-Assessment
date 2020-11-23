@@ -21,6 +21,7 @@ namespace MathForGames
         protected Actor _parent;
         protected Actor[] _children = new Actor[0];
         private float _maxSpeed = 5;
+        private float _collisionRadius = 1;
         
         public bool Started { get; private set; }
 
@@ -56,6 +57,23 @@ namespace MathForGames
                 _globalTransform = _parent._globalTransform * _localTransform;
             else
                 _globalTransform = Game.GetCurrentScene().World * _localTransform;
+        }
+
+        public bool CheckCollision(Actor collider)
+        {
+            float distance = (float)Math.Sqrt((collider._collisionRadius + _collisionRadius));
+
+            if (distance <= 1)
+            {
+                OnCollision(collider);
+                return true;
+            }
+            return false;
+        }
+
+        public virtual void OnCollision(Actor collider)
+        {
+            collider.SetRotation(2);
         }
 
         public Vector2 WorldPosition
@@ -182,9 +200,10 @@ namespace MathForGames
             Started = true;
         }
 
-        public void Update(float deltaTime)
+        public virtual void Update(float deltaTime)
         {
             UpdateTransform();
+
 
             Velocity += Acceleration;
 
@@ -195,7 +214,7 @@ namespace MathForGames
             LocalPosition += _velocity * deltaTime;
         }
 
-        public void Draw()
+        public virtual void Draw()
         {
             Raylib.DrawText(_icon.ToString(), (int)(WorldPosition.X * 32), (int)(WorldPosition.Y * 32), 32, _rayColor);
             Raylib.DrawLine(

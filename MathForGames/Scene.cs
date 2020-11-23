@@ -95,9 +95,15 @@ namespace MathForGames
 
         }
 
+        private void CheckCollision()
+        {
+
+        }
+
         public void Start()
         {
             Started = true;
+
         }
 
         public void Update(float deltaTime)
@@ -108,6 +114,7 @@ namespace MathForGames
                     _actors[i].Start();
 
                 _actors[i].Update(deltaTime);
+                CheckCollision();
             }
         }
 

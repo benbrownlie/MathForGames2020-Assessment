@@ -13,7 +13,7 @@ namespace MathForGames
         //Goal: Create a simple wave based shooter that adds more enemies as the waves progress.
 
         //Missing:
-        //Player and enemies, player and enemy sprites. Scene for actors to exist in.
+        //Player and enemies, player and enemy sprites.
         //Basic collision detection for enemies and walls 
         //(Example: If player shoots enemy detect hit and remove enemy, if enemy touches player gameover, if player hits wall don't move)
         //
@@ -130,7 +130,11 @@ namespace MathForGames
             Console.Title = "Assessment Game";
 
             Scene scene1 = new Scene();
-            Actor actor1 = new Actor(0, 0, '@',ConsoleColor.Blue);
+            Player actor1 = new Player(0, 0, '@',ConsoleColor.Blue);
+            Actor actor2 = new Actor(5, 5, '#', ConsoleColor.Red);
+
+            scene1.AddActor(actor1);
+            scene1.AddActor(actor2);
 
             int startingSceneIndex = 0;
 
