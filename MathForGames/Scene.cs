@@ -1,12 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MathLibrary;
 
 namespace MathForGames
 {
     class Scene
     {
         private Actor[] _actors;
+        private Matrix3 _transform = new Matrix3();
+
+        public Matrix3 World
+        {
+            get { return _transform; }
+            set { }
+        }
+
+        public bool Started { get; private set; }
 
         public Scene()
         {
@@ -45,7 +55,7 @@ namespace MathForGames
                 else
                 {
                     actorRemoved = true;
-                    //if (_actors[i].Started)
+                    if (_actors[i].Started)
                         _actors[i].End();
                 }
             }
@@ -74,7 +84,7 @@ namespace MathForGames
                 else
                 {
                     actorRemoved = true;
-                    //if (actor.Started)
+                    if (actor.Started)
                         actor.End();
                 }
             }
@@ -87,22 +97,37 @@ namespace MathForGames
 
         public void Start()
         {
-
+            Started = true;
         }
 
-        public void Update()
+        public void Update(float deltaTime)
         {
+            for (int i = 0; i < _actors.Length; i++)
+            {
+                if (!_actors[i].Started)
+                    _actors[i].Start();
 
+                _actors[i].Update(deltaTime);
+            }
         }
 
         public void Draw()
         {
-
+            for (int i = 0; i < _actors.Length; i++)
+            {
+                _actors[i].Draw();
+            }
         }
 
         public void End()
         {
+            for (int i = 0; i < _actors.Length; i++)
+            {
+                if (!_actors[i].Started)
+                    _actors[i].End();
+            }
 
+            Started = false;
         }
     }
 }
