@@ -59,21 +59,20 @@ namespace MathForGames
                 _globalTransform = Game.GetCurrentScene().World * _localTransform;
         }
 
-        public bool CheckCollision(Actor collider)
+        public virtual bool CheckCollision(Actor other)
         {
-            float distance = 
+            float distance = _collisionRadius + other._collisionRadius;
 
-            if ()
+            if (distance <= other._collisionRadius)
             {
-                
                 return true;
             }
             return false;
         }
 
-        public virtual void OnCollision(Actor collider)
+        public virtual void OnCollision(Actor other)
         {
-            collider.SetRotation(2);
+            other.SetRotation(2);
         }
 
         public Vector2 WorldPosition
@@ -203,8 +202,6 @@ namespace MathForGames
         public virtual void Update(float deltaTime)
         {
             UpdateTransform();
-
-            CheckCollision();
 
             Velocity += Acceleration;
 
