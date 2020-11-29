@@ -7,7 +7,7 @@ namespace MathForGames
 {
     class Scene
     {
-        private Actor[] _actors;
+        private static Actor[] _actors;
         private Matrix3 _transform = new Matrix3();
 
         public Matrix3 World
@@ -64,7 +64,7 @@ namespace MathForGames
             return actorRemoved;
         }
 
-        public bool RemoveActor(Actor actor)
+        public static bool RemoveActor(Actor actor)
         {
             if (actor == null)
             {
@@ -97,7 +97,13 @@ namespace MathForGames
 
         private void CheckCollision()
         {
-
+            for (int i = 0; i < _actors.Length - 1; i++)
+            {
+                for (int j = 0; j < _actors.Length; j++)
+                {
+                    _actors[i].CheckCollision(_actors[j]);
+                }
+            }
         }
 
         public void Start()

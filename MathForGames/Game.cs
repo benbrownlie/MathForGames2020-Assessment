@@ -131,8 +131,8 @@ namespace MathForGames
             Console.Title = "Assessment Game";
 
             Scene scene1 = new Scene();
-            Player actor1 = new Player(0, 0, '@',ConsoleColor.Blue);
-            Actor actor2 = new Actor(5, 5, '#', ConsoleColor.Red);
+            Player actor1 = new Player(1, 1, '@',ConsoleColor.Blue);
+            Actor actor2 = new Actor(20, 10, '#', ConsoleColor.Red);
 
             scene1.AddActor(actor1);
             scene1.AddActor(actor2);
