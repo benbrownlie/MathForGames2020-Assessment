@@ -21,7 +21,7 @@ namespace MathForGames
         protected Actor _parent;
         protected Actor[] _children = new Actor[0];
         private float _maxSpeed = 5;
-        private float _collisionRadius = 1;
+        private float _collisionRadius = 1f;
         
         public bool Started { get; private set; }
 
@@ -33,6 +33,8 @@ namespace MathForGames
             }
         }
 
+        //Set functions for Translation, Rotation and Scale
+        //Will set the values equal to the argument passed in
         public void SetTranslation(Vector2 position)
         {
             _translation = Matrix3.CreateTranslation(position);
@@ -49,6 +51,8 @@ namespace MathForGames
             _scale = Matrix3.CreateScale(new Vector2(x, y));
         }
 
+        //Using the translation, rotation, and scale
+        //Finds the actor's transform
         public void UpdateTransform()
         {
             _localTransform = _translation * _rotation * _scale;
@@ -59,17 +63,23 @@ namespace MathForGames
                 _globalTransform = Game.GetCurrentScene().World * _localTransform;
         }
 
+        //Used to check if multiple actors have collided
         public virtual bool CheckCollision(Actor other)
         {
+            //if other is also the actor will not run the rest of function
             if (other == this)
             {
                 return false;
             }
 
-            float CombinedRadius = other._collisionRadius + _collisionRadius;
-            float Distance = (other.WorldPosition - WorldPosition).Magnitude;
+            //if not, checks the actor's radii and combines it
+            //then checks the distance between their world position
+            float combinedRadius = other._collisionRadius + _collisionRadius;
+            float distance = (other.WorldPosition - WorldPosition).Magnitude;
 
-            if (CombinedRadius > Distance)
+            //if their combined radius is greater than the distance between them
+            //return true, else return false
+            if (combinedRadius > distance)
             {
                 return true;
             }
@@ -78,12 +88,14 @@ namespace MathForGames
 
         public virtual void OnCollision(Actor other)
         {
+            //When called will execute listed code.
             other.SetRotation(2);
             Scene.RemoveActor(other);
         }
 
         public Vector2 WorldPosition
         {
+            //Actors position in the world
             get
             {
                 return new Vector2(_globalTransform.m13, _globalTransform.m23);
@@ -92,12 +104,14 @@ namespace MathForGames
 
         public Vector2 LocalPosition
         {
+            //Actors local position
             get
             {
                 return new Vector2(_localTransform.m13, _localTransform.m23);
             }
             set
             {
+                //Sets translation to an X Y value
                 _translation.m13 = value.X;
                 _translation.m23 = value.Y;
             }
@@ -115,12 +129,14 @@ namespace MathForGames
             }
         }
 
+        //Constructors for actor
         public Actor()
         {
             LocalPosition = new Vector2();
             _velocity = new Vector2();
         }
 
+        //Constructor with four arguments
         public Actor(float x, float y, char icon = ' ', ConsoleColor color = ConsoleColor.White)
         {
             _rayColor = Color.WHITE;
@@ -131,6 +147,7 @@ namespace MathForGames
             _color = color;
         }
 
+        //Constructor with five arguments
         public Actor(float x, float y, Color rayColor, char icon = ' ', ConsoleColor color = ConsoleColor.White)
             : this(x, y, icon, color)
         {
@@ -138,6 +155,7 @@ namespace MathForGames
             _localTransform = new Matrix3();
         }
 
+        //Functions for adding and removing childed actors
         public bool AddChild(Actor child)
         {
             if (child == null)

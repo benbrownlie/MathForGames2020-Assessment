@@ -151,6 +151,7 @@ namespace MathForGames
             //Creates new actors
             Player actor1 = new Player(1, 1, '@',ConsoleColor.Blue);
             Actor actor2 = new Actor(20, 10, '#', ConsoleColor.Red);
+            Actor actor3 = new Actor(40, 10, '$', ConsoleColor.Green);
 
             //Adds new actors to the scene
             scene1.AddActor(actor1);
