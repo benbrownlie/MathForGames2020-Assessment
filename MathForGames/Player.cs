@@ -15,7 +15,7 @@ namespace MathForGames
         {
             get
             {
-                return Speed;
+                return _speed;
             }
             set
             {

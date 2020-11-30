@@ -61,12 +61,17 @@ namespace MathForGames
 
         public virtual bool CheckCollision(Actor other)
         {
-            float tempDistance = other._collisionRadius + _collisionRadius;
-            float tempPosition = (other.WorldPosition - WorldPosition).Magnitude;
-
-            if (tempDistance > tempPosition)
+            if (other == this)
             {
-                OnCollision(other);
+                return false;
+            }
+
+            float CombinedRadius = other._collisionRadius + _collisionRadius;
+            float Distance = (other.WorldPosition - WorldPosition).Magnitude;
+
+            if (CombinedRadius > Distance)
+            {
+                return true;
             }
             return false;
         }

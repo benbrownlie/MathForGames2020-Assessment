@@ -101,7 +101,10 @@ namespace MathForGames
             {
                 for (int j = 0; j < _actors.Length; j++)
                 {
-                    _actors[i].CheckCollision(_actors[j]);
+                    if (_actors[i].CheckCollision(_actors[j]))
+                    {
+                        _actors[i].OnCollision(_actors[j]);
+                    }
                 }
             }
         }
