@@ -11,8 +11,8 @@ namespace MathForGames
         protected char _icon = ' ';
         private Vector2 _velocity = new Vector2();
         private Vector2 _acceleration = new Vector2();
-        private Matrix3 _globalTransform = new Matrix3();
-        private Matrix3 _localTransform = new Matrix3();
+        protected Matrix3 _globalTransform = new Matrix3();
+        protected Matrix3 _localTransform = new Matrix3();
         private Matrix3 _translation = new Matrix3();
         private Matrix3 _rotation = new Matrix3();
         private Matrix3 _scale = new Matrix3();

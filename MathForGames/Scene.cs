@@ -117,14 +117,15 @@ namespace MathForGames
 
         public void Update(float deltaTime)
         {
+
             for (int i = 0; i < _actors.Length; i++)
             {
                 if (!_actors[i].Started)
                     _actors[i].Start();
 
                 _actors[i].Update(deltaTime);
-                CheckCollision();
             }
+            CheckCollision();
         }
 
         public void Draw()

@@ -149,13 +149,23 @@ namespace MathForGames
             //Creates a new scene
             Scene scene1 = new Scene();
             //Creates new actors
-            Player actor1 = new Player(1, 1, '@',ConsoleColor.Blue);
+            Player actor1 = new Player(1, 1, Color.BLUE, ' ',ConsoleColor.Blue);
             Actor actor2 = new Actor(20, 10, '#', ConsoleColor.Red);
-            Actor actor3 = new Actor(40, 10, '$', ConsoleColor.Green);
+            Enemy actor3 = new Enemy(40, 10, Color.GREEN, ' ', ConsoleColor.Green);
 
             //Adds new actors to the scene
+            //Actor1's properties
             scene1.AddActor(actor1);
+            actor1.SetScale(2, 2);
+
+            //Actor2's properties
             scene1.AddActor(actor2);
+            actor2.SetScale(2, 2);
+
+            //Actor3's Properties
+            scene1.AddActor(actor3);
+            actor3.SetScale(2, 2);
+
 
             //Creates a new starting scene variable
             int startingSceneIndex = 0;

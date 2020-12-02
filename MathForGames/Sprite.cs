@@ -10,6 +10,7 @@ namespace MathForGames
     {
         private Texture2D _texture;
 
+        //Width of the loaded texture
         public int Width
         {
             get
@@ -22,6 +23,7 @@ namespace MathForGames
             }
         }
 
+        //Height of the loaded texture
         public int Height
         {
             get
@@ -34,6 +36,11 @@ namespace MathForGames
             }
         }
 
+        public Sprite(Texture2D texture)
+        {
+            _texture = texture;
+        }
+
         public Sprite(string path)
         {
             _texture = Raylib.LoadTexture(path);
@@ -41,12 +48,14 @@ namespace MathForGames
 
         public void Draw(Matrix3 transform)
         {
+            //Finds the scale of the sprite
             float xMagnitude = (float)Math.Round(new Vector2(transform.m11, transform.m21).Magnitude);
             float yMagnitude = (float)Math.Round(new Vector2(transform.m12, transform.m22).Magnitude);
 
             Width = (int)xMagnitude;
             Height = (int)yMagnitude;
 
+            //Sets the sprite center to the transform origin
             System.Numerics.Vector2 pos = new System.Numerics.Vector2(transform.m13, transform.m23);
             System.Numerics.Vector2 forward = new System.Numerics.Vector2(transform.m11, transform.m21);
             System.Numerics.Vector2 up = new System.Numerics.Vector2(transform.m12, transform.m22);
@@ -54,8 +63,10 @@ namespace MathForGames
             pos -= (forward / forward.Length()) * Width / 2;
             pos -= (up / up.Length()) * Height / 2;
 
+            //Find the transform rotation in radians
             float rotation = (float)Math.Atan2(transform.m21, transform.m11);
 
+            //Draws the sprite
             Raylib.DrawTextureEx(_texture, pos * 32, (float)(rotation * 180.0f / Math.PI), 32, Color.WHITE);
         }
     }
