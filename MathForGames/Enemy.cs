@@ -10,6 +10,7 @@ namespace MathForGames
     {
         private Actor _target;
         private Sprite _enemySprite;
+        private float _health;
 
         public Actor Target
         {

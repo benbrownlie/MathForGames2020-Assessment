@@ -13,8 +13,7 @@ namespace MathForGames
         //Goal: Create a simple wave based shooter that adds more enemies as the waves progress.
 
         //Missing:
-        //Player and enemies, player and enemy sprites.
-        //Basic collision detection for enemies and walls 
+        //Basic collision detection for walls
         //(Example: If player shoots enemy detect hit and remove enemy, if enemy touches player gameover, if player hits wall don't move)
         //
         private static bool _gameOver = false;

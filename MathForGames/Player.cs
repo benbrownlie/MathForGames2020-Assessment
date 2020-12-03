@@ -10,6 +10,7 @@ namespace MathForGames
     {
         private float _speed;
         private Sprite _sprite;
+        private float _health;
 
         public float Speed
         {
@@ -32,6 +33,11 @@ namespace MathForGames
             : base (x, y, rayColor, icon, color)
         {
             _sprite = new Sprite("Sprites/player.png");
+        }
+
+        public void CreateBullet(Projectile bullet)
+        {
+
         }
 
         public override void Update(float deltaTime)
