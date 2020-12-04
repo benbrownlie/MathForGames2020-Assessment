@@ -19,6 +19,11 @@ The following is a list of the classes and functions used in the program along w
 ### Game Class
 Class used as the main engine for the program.
 
+> #### Variables
+> - private static bool _gameOver- Used to determine if the game should end
+> - private static Scene[] _scenes- Stores an array of scenes
+> - private static int _currentSceneIndex- Indexer for scene array
+
 > #### Functions and Properties
 > - GetSceneIndex- Returns the variable _currentSceneIndex
 >
@@ -53,6 +58,10 @@ Class used as the main engine for the program.
 ### Scene Class
 Class used for handling events that go on in a scene
 
+> #### Variables
+> - private static Actor[] _actors- Stores an array of actors
+> - private Matrix3 _transform- A transform set to a new Matrix3
+
 > ### Functions and Properties
 >
 > - World- Returns the variable _transform
@@ -77,6 +86,22 @@ Class used for handling events that go on in a scene
 
 ### Actor Class
 Used to handle all the attributes for an actor
+
+>#### Variables
+> - protected char _icon- Icon char set to ' ' by default
+> - private vector2 _velocity-  The actor's velocity
+> - private Vector2 _acceleration- The actor's acceleration
+> - protected Matrix3 _globalTransform- The actor's global transform
+> - protected Matrix3 _localTransform- The actor's local transform
+> - private Matrix3 _translation- The actor's translation matrix
+> - private Matrix3 _rotation- The actor's rotation matrix
+> - private Matrix3 _scale- The actor's scale matrix
+> - protected ConsoleColor _color- Used to display actor's color in console
+> - protected Color _rayColor- Used to set ray color
+> - protected Actor _parent- Used to store an actor's parent
+> - protected Actor[] _children- Used store an actor's child
+> - private float _maxSpeed- Used to store the actor's max speed
+> - private float _collisionRadius- Used to store the actor's collision radius
 
 > ### Functions and Properties
 >
@@ -123,6 +148,12 @@ Used to handle all the attributes for an actor
 ### Player Class
 Used to handle the attributes of a player, inherits from Actor
 
+>#### Variables
+> - private float _speed- Used to store the player's speed
+> - private Sprite _sprite- Used to store the player's sprite
+> - private float _health- Will be used to store the player's health
+> - projectile bullet- Will be used for bullet projectiles
+
 > ### Functions and Properties
 >
 > - Speed- property used return the variable _speed and set it to a value
@@ -137,8 +168,22 @@ Used to handle the attributes of a player, inherits from Actor
 >
 > - Draw()- Draws the player's sprite and calls the base actor draw
 
+### Companion Class
+Used to handle the attributes for the player's companion, inherits from Actor
+
+>#### Variables
+> - private Sprite _sprite- Used to store the Companion's sprite
+
+> ### Functions
+> The companion uses the same constructor as player taking in 4 and 5 arguments
+
 ### Enemy Class
 Used to handle the attributes of an enemy, inherits from Actor
+
+>#### Variables
+> - private Actor _target- Used to store the enemy's target
+> - private Sprite _enemySprite- Used to store the enemy's sprite
+> - private float _health- Will be used to store the enemy's health
 
 > ### Functions and Properties
 >
@@ -158,6 +203,11 @@ Used to handle the attributes of an enemy, inherits from Actor
 Used to handle the attributes of a projectile, inherits from Actor
 
 **Note: Currently the Projectile class is not being used and is just for experimenting, will probably try and get it working after the assessment**
+
+>#### Variables
+> - private float _speed- Will be used to store the speed of a projectile
+> - private float _damage- Will be used to store the damage of a projectile
+> - private Sprite _bulletSprite- Will be used to store the sprite for a projectile
 
 > ### Functions and Properties
 >
@@ -179,13 +229,13 @@ This documentation for the redistributable MathLibrary
 Vector class that uses 4 floats
 > #### Variables
 >
-> - floats that are used to represent x, y, z, and w. _'s are used in the names for accessability and to note that they are private
+> - floats that are used to represent x, y, z, and w. _'s are used in the names for accessibility and to note that they are private
 >
 > ### Functions and Properties
 >
 > - XYZW properties- These properties are used to get the variables that represent xyzw and set them to a value
 >
-> - Magnitude- Property used to return the square root of X + X * Y + Y * Z + Z * W + W casted as a float
+> - Magnitude- Property used to return the Magnitude by getting the square root of X + X * Y + Y * Z + Z * W + W casted as a float
 >
 > - Normalized- Property used to return the normalized version of a value
 >
@@ -205,4 +255,86 @@ Vector class that uses 4 floats
 Vector class that uses 3 floats
 > #### Variables
 >
-> - 
+> - floats that are used to represent x, y, z. _'s are used in the name for accessibility and to note that they are private
+>
+> ### Functions and Properties
+>
+> - XYZ properties- These properties are used to get the variables that represent xyzw and set them to a value
+>
+> - Magnitude- Property used to return the Magnitude by getting square root of X + X * Y + Y * Z + Z casted as a float
+>
+> - Normalized- Property used to return the normalized version of a value
+>
+> - Normalize(Vector3 vector)- Returns the magnitude of a passed in vector3
+>
+> - DotProduct(Vector3 lhs, Vector3 rhs)-
+>
+> - CrossProduct(Vector3 lhs, Vector3 rhs)- Returns the Cross product of the variables passed in for lhs and rhs
+>
+> - Vector3()- Used to set xyz to 0
+>
+> - Vector3(float x, float y, float z)- Sets the value of _x _y _z to be the value passed in
+>
+> - Operator Functions- Functions allowing for Vectors to add, subtract, multiple and divide by other vectors and floats
+
+### Vector2 class
+Vector class that uses 2 floats
+> ### Variables
+>
+> - floats that are used to represent x, y, z. _'s are used in the name for accessibility and to note that they are private
+>
+> ### Functions and Properties
+>
+> - XY properties- These properties are used to get the variables that represent xyzw and set them to a value
+>
+> - Magnitude- Property used to return the Magnitude by getting square root of X + X * Y + Y * Z + Z casted as a float
+>
+> - Normalized- Property used to return the normalized version of a value
+>
+> - Normalize(Vector2 vector)- Returns the magnitude of a passed in vector3
+>
+> - DotProduct(Vector2 lhs, Vector2 rhs)-
+>
+> - Vector2()- Used to set xy to 0
+>
+> - Vector2(float x, float y)- Sets the value of _x _y to be the value passed in
+>
+> - Operator Functions- Functions allowing for Vectors to add, subtract, multiple and divide by other vectors and floats
+
+### Matrix4 class
+Class that holds logic for indentity matrix4
+> ### Variables
+>
+> - floats that are used to represent the individual elements of the matrix represented by the letter "m" and followed by a "." and the respective number
+>
+> ### Methods, Constructor, and Operators
+>
+> - Constructor- A matrix constructor that takes in 16 elements
+>
+> - CreateRotation(float radians)- Returns the matrix rotated by the value passed in
+>
+> - CreateTranslation(Vector4 position)- Returns the matrix translated by the value passed in
+>
+> - CreateRotation(Vector3 scale)- Returns the matrix rotated by the value passed in
+>
+> - Operator Functions- Functions allowing for Addition, Subtraction, and Multiplication between two given Matrix4's and Multiplication between
+> Matrix4 on the left hand side(lhs) a Vector4 on the right hand side(rhs) and between a Matrix4(lhs) and Vector2(rhs)
+
+### Matrix3 class
+Class that holds logic for indentity matrix3
+> ### Variables
+>
+> - floats that are used to represent the individual elements of the matrix represented by the letter "m" and followed by a "." and the respective number
+>
+> ### Methods, Constructor, and Operators
+>
+> - Constructor- A matrix constructor that takes in 12 elements
+>
+> - CreateRotation(float radians)- Returns the matrix rotated by the value passed in
+>
+> - CreateTranslation(Vector2 position)- Returns the matrix translated by the value passed in
+>
+> - CreateRotation(Vector2 scale)- Returns the matrix rotated by the value passed in
+>
+> - Operator Functions- Functions allowing for Addition, Subtraction, and Multiplication between two given Matrix3's and Multiplication between
+> Matrix3 on the left hand side(lhs) a Vector2 on the right hand side(rhs) and between a Matrix3(lhs) and Vector3(rhs)

@@ -27,13 +27,13 @@ namespace MathForGames
         public Player(float x, float y, char icon = ' ', ConsoleColor color = ConsoleColor.White)
             : base (x, y, icon, color)
         {
-            _sprite = new Sprite("/Sprites/player.png");
+            _sprite = new Sprite("/Sprites/dog.png");
         }
 
         public Player(float x, float y, Color rayColor, char icon = ' ', ConsoleColor color = ConsoleColor.White)
             : base (x, y, rayColor, icon, color)
         {
-            _sprite = new Sprite("Sprites/player.png");
+            _sprite = new Sprite("Sprites/dog.png");
         }
 
         public void CreateBullet(Projectile bullet)

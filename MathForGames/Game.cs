@@ -13,7 +13,6 @@ namespace MathForGames
         private static bool _gameOver = false;
         private static Scene[] _scenes;
         private static int _currentSceneIndex;
-        private Sprite _sceneSprite;
 
         public static int CurrentSceneIndex
         {
@@ -128,6 +127,21 @@ namespace MathForGames
             _gameOver = value;
         }
 
+        //Function used to add enemy chickens to the scene
+        public void SpawnChickens(Scene scene)
+        {
+            //for loop that adds chickens until the condition is met
+            for (int i = 10; i < 20; i++)
+            {
+                Enemy chicken = new Enemy(20, i-5, ' ', ConsoleColor.Green);
+                Enemy chicken2 = new Enemy(30, i-3, ' ', ConsoleColor.Green);
+                Enemy chicken3 = new Enemy(40, i - 1, ' ', ConsoleColor.Green);
+                scene.AddActor(chicken);
+                scene.AddActor(chicken2);
+                scene.AddActor(chicken3);
+            }
+        }
+
 
         //Called when the game begins. Use this for initialization.
         public void Start()
@@ -145,22 +159,20 @@ namespace MathForGames
             Scene scene1 = new Scene();
             //Creates new actors
             Player actor1 = new Player(1, 1, Color.BLUE, ' ',ConsoleColor.Blue);
-            Actor actor2 = new Actor(20, 10, '#', ConsoleColor.Red);
-            Enemy actor3 = new Enemy(40, 10, Color.GREEN, ' ', ConsoleColor.Green);
+            Companion baby = new Companion(1, 2, Color.DARKBLUE, ' ', ConsoleColor.DarkBlue);
+            Enemy chicken = new Enemy(20, 10, Color.GREEN, ' ', ConsoleColor.Green);
 
             //Adds new actors to the scene
             //Actor1's properties
             scene1.AddActor(actor1);
+            actor1.SetTranslation(new Vector2(2, 2));
             actor1.SetScale(2, 2);
 
-            //Actor2's properties
-            scene1.AddActor(actor2);
-            actor2.SetScale(2, 2);
-
-            //Actor3's Properties
-            scene1.AddActor(actor3);
-            actor3.SetScale(2, 2);
-
+            //Actor1's child "baby"'s properties
+            scene1.AddActor(baby);
+            actor1.AddChild(baby);
+            baby.SetTranslation(new Vector2(1, -1));
+            baby.SetScale(0.5f, 0.5f);
 
             //Creates a new starting scene variable
             int startingSceneIndex = 0;
@@ -171,6 +183,8 @@ namespace MathForGames
             //Uses SetCurrentScene function to set the scene 
             //using the previously created variable
             SetCurrentScene(startingSceneIndex);
+
+            SpawnChickens(scene1);
         }
 
 
