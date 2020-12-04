@@ -7,12 +7,16 @@ Game Programming Year One |
 ### Game
 
 Welcome to my sandbox test game! This is a simple demonstration of requirements for my assessment
-.
+
+***Goal***
+
+Your objective is to run into the chickens causing them to dissappear or maneuver in a way that your companion does it for you.
+
 
 The game currently includes:
-> - A collision course where you can maneuver a dog and its compaion around to demonstrate collision detection.
-> - A player character and enemies to collide into.
-> - A companion to the player that can also collide with enemies.
+> - A collision course where you can maneuver a dog and its companion around to demonstrate collision detection.
+> - A player character and enemies(displayed as chickens) to collide into.
+> - A companion to the player that can also collide with enemies(chickens).
 ### How to play
 
 *Movement*- Using the WASD keys, you can maneuver the spaceship
