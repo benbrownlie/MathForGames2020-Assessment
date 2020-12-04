@@ -10,8 +10,9 @@ Welcome to my sandbox test game! This is a simple demonstration of requirements 
 .
 
 The game currently includes:
-> - A collision course where you can maneuver a spaceship around to demonstrate collision detection.
+> - A collision course where you can maneuver a dog and its compaion around to demonstrate collision detection.
 > - A player character and enemies to collide into.
+> - A companion to the player that can also collide with enemies.
 ### How to play
 
 *Movement*- Using the WASD keys, you can maneuver the spaceship
@@ -20,11 +21,20 @@ The game currently includes:
 > - S = Down
 > - A = Left
 > - D = Right
+> - Esc = Close game
 
 
 ### Future Additions
 
 > - Player can shoot at enemies
+
+### Notes
+***Currently the game does not close itself. To close the game press the Escape(esc) key***
+
+### How to download
+> - Download the most recent release
+> - Unzip the folder
+> - Run MathForGames2020.exe
 
 
 ## License
