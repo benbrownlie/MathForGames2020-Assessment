@@ -10,12 +10,6 @@ namespace MathForGames
 {
     class Game
     {
-        //Goal: Create a simple wave based shooter that adds more enemies as the waves progress.
-
-        //Missing:
-        //Basic collision detection for walls
-        //(Example: If player shoots enemy detect hit and remove enemy, if enemy touches player gameover, if player hits wall don't move)
-        //
         private static bool _gameOver = false;
         private static Scene[] _scenes;
         private static int _currentSceneIndex;
@@ -40,13 +34,13 @@ namespace MathForGames
 
         public static Scene GetCurrentScene()
         {
-            //Returns the current scene index
+            //Returns the array _scenes at the index of _currentSceneIndex
             return _scenes[_currentSceneIndex];
         }
 
         public static int AddScene(Scene scene)
         {
-            //Function used for adding scenes
+            //Function used to add scenes to an array of scenes
 
             //Temporary array for scenes set to a new scene with a scene's length + 1
             Scene[] tempArray = new Scene[_scenes.Length + 1];
@@ -100,6 +94,8 @@ namespace MathForGames
 
         public static void SetCurrentScene(int index)
         {
+            //Sets the scene to the passed in index
+
             if (index < 0 || index >= _scenes.Length)
                 return;
 

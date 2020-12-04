@@ -6,10 +6,12 @@ Game Programming Year One |
 
 ### Game
 
-You control a small spacecraft, you must defend yourself from incoming enemy space ships.
-Maneuver around open space and shoot to defend yourself from the oncoming horde of enemies.
-As you defeat all the enemies in a wave more enemies will spawn.
+Welcome to my sandbox test game! This is a simple demonstration of requirements for my assessment
+.
 
+The game currently includes:
+> - A collision course where you can maneuver a spaceship around to demonstrate collision detection.
+> - A player character and enemies to collide into.
 ### How to play
 
 *Movement*- Using the WASD keys, you can maneuver the spaceship
@@ -19,6 +21,10 @@ As you defeat all the enemies in a wave more enemies will spawn.
 > - A = Left
 > - D = Right
 
+
+### Future Additions
+
+> - Player can shoot at enemies
 
 
 ## License

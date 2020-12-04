@@ -11,6 +11,7 @@ namespace MathForGames
         private float _speed;
         private Sprite _sprite;
         private float _health;
+        Projectile bullet;
 
         public float Speed
         {
@@ -37,7 +38,10 @@ namespace MathForGames
 
         public void CreateBullet(Projectile bullet)
         {
-
+            Game.GetKeyPressed((int)KeyboardKey.KEY_SPACE);
+            {
+                bullet = new Projectile(Forward, LocalPosition + Forward, 5, 10, '0', ConsoleColor.Red);
+            }
         }
 
         public override void Update(float deltaTime)
